@@ -3,885 +3,722 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Accetion - AI-Powered Invoice Automation</title>
+<meta name="description" content="Startup Company focused on innovative solutions." />
+<title>Startup Company - Innovating for a Better Tomorrow</title>
+
 <style>
-  /* General Reset and base font */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0d1117;
-    color: #cdd9e5;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {
-    color: #58a6ff;
-    text-decoration: none;
-  }
-  a:focus, button:focus, input:focus, select:focus, textarea:focus {
-    outline: 3px solid #58a6ff;
-    outline-offset: 2px;
-  }
-  h1,h2,h3,h4,h5,h6 {
-    margin-top: 0;
-    font-weight: 700;
-  }
-  main {
-    flex: 1 0 auto;
-  }
-  section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Scrollbar for body */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #161b22;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #30363d;
-    border-radius: 5px;
-  }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fefefe;
+  overflow-x: hidden;
+}
 
-  /* Colors and gradients */
-  :root {
-    --clr-primary: #58a6ff;
-    --clr-secondary: #8250df;
-    --clr-accent: #d2a8ff;
-    --bg-dark: #0d1117;
-    --bg-dark-2: #161b22;
-    --text-light: #cdd9e5;
-    --shadow-glow: 0 0 15px #8250dfaa;
-    --transition-duration: 0.3s;
-  }
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: #005f73;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
-  /* Dark mode styles - light mode toggle */
-  body.light {
-    background: #f0f2f5;
-    color: #222222;
-  }
-  body.light a {
-    color: #0a66c2;
-  }
-  body.light header, body.light footer {
-    background-color: #ffffff;
-    color: #222222;
-  }
-  body.light button.primary-btn {
-    background: var(--clr-primary);
-    color: white;
-  }
-  body.light button.primary-btn:hover {
-    background: #337ab7;
-  }
+header .logo h1 {
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: 1.2px;
+  user-select: none;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+header .logo h1:hover {
+  transform: rotateY(15deg) rotateX(10deg) translateZ(10px);
+  color: #94d2bd;
+}
 
-  /* Header & Navbar */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #94d2bd;
+  color: #003d3b;
+  transform: translateZ(6px) scale(1.05);
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 420px;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  perspective: 1200px;
+  background: linear-gradient(135deg, #0a9396 0%, #005f73 100%);
+  user-select: none;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5) contrast(1.2);
+  z-index: 0;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.hero:hover::before {
+  transform: scale(1.1) rotateZ(1deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  animation: fadeInMoveUp 1s ease forwards;
+  transform-style: preserve-3d;
+}
+
+.hero-content h2 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 0.3em;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  transform: translateZ(40px) rotateX(-7deg);
+  transition: transform 0.5s ease;
+  cursor: default;
+}
+.hero-content h2:hover {
+  transform: translateZ(80px) rotateX(0deg) scale(1.05);
+  text-shadow: 3px 3px 12px rgba(255, 255, 255, 0.8);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 1.2em;
+  font-weight: 500;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+}
+
+.cta-button {
+  background: #94d2bd;
+  color: #003d3b;
+  padding: 12px 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(148, 210, 189, 0.7);
+  transition:
+    transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    box-shadow 0.3s ease,
+    background-color 0.4s ease;
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.cta-button:hover,
+.cta-button:focus {
+  background: #ee9b00;
+  color: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(238, 155, 0, 0.8);
+  transform: translateZ(20px) scale(1.1);
+  outline: none;
+}
+
+/* About Us Section */
+.about {
+  padding: 60px 1rem 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-weight: 900;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.07em;
+  color: #005f73;
+}
+
+.about p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  margin-top: 1.5rem;
+  transition: transform 0.35s ease;
+  cursor: pointer;
+}
+.about-image:hover,
+.about-image:focus {
+  transform: scale(1.03) rotateZ(1deg);
+  outline: none;
+}
+
+/* Goals Section */
+.goals {
+  background: #e0fbfc;
+  padding: 50px 20px;
+  max-width: 720px;
+  margin: 0 auto 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.goals h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #005f73;
+  margin-bottom: 1em;
+}
+
+.goals ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 16px;
+  padding-left: 0;
+}
+
+.goals ul li {
+  position: relative;
+  background: white;
+  padding: 16px 36px 16px 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.08);
+  user-select: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  perspective: 700px;
+  transform-style: preserve-3d;
+}
+.goals ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: #0a9396;
+  font-weight: bold;
+  text-shadow: 0 0 5px #94d2bdaa;
+}
+.goals ul li:hover {
+  box-shadow: 0 16px 26px rgb(0 0 0 / 0.15);
+  transform: translateZ(15px) rotateX(-5deg) scale(1.05);
+}
+
+/* Services Section */
+.services {
+  max-width: 960px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0a9396;
+  margin-bottom: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 30px;
+}
+
+.service-item {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: default;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.service-item:hover {
+  transform: translateZ(20px) rotateY(8deg) rotateX(4deg) scale(1.05);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+}
+
+.service-item img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+  transition: filter 0.3s ease;
+}
+
+.service-item:hover img {
+  filter: drop-shadow(0 5px 8px rgba(14, 38, 42, 0.4));
+}
+
+.service-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8em;
+  color: #005f73;
+}
+
+.service-item p {
+  color: #444;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Testimonials */
+.testimonials {
+  background: #005f73;
+  color: #d9f0f2;
+  padding: 60px 20px;
+  max-width: 930px;
+  margin: 0 auto 60px;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 0.04em;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  position: relative;
+  user-select: none;
+}
+
+blockquote p {
+  margin-bottom: 0.7em;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+blockquote::before {
+  content: "“";
+  font-size: 4rem;
+  position: absolute;
+  left: -40px;
+  top: -10px;
+  color: #94d2bdcc;
+  font-weight: 900;
+  user-select: none;
+}
+
+.testimonials cite {
+  font-weight: 700;
+  font-style: normal;
+  color: #a7cbd6;
+}
+
+/* Blog Preview */
+.blog {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.blog h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0a9396;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.blog article {
+  margin-bottom: 2.2rem;
+}
+
+.blog article h3 {
+  font-size: 1.3rem;
+  color: #005f73;
+  margin-bottom: 0.3rem;
+}
+
+.blog article p {
+  font-weight: 500;
+  color: #333;
+  line-height: 1.5;
+}
+
+.blog article a {
+  color: #ee9b00;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.blog article a:hover,
+.blog article a:focus {
+  text-decoration: underline;
+  color: #ca6702;
+  outline: none;
+}
+
+/* Contact Section */
+.contact {
+  max-width: 600px;
+  margin: 0 auto 80px;
+  padding: 0 15px;
+}
+
+.contact h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #005f73;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 1rem;
+}
+
+.contact label {
+  font-weight: 700;
+  color: #333;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #94d2bd;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.contact input[type="text"]:focus,
+.contact input[type="email"]:focus,
+.contact textarea:focus {
+  border-color: #0a9396;
+  outline: none;
+}
+
+.contact textarea {
+  min-height: 120px;
+}
+
+.contact button[type="submit"] {
+  background: #0a9396;
+  color: white;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,149,150,0.7);
+  transition: background-color 0.3s ease, transform 0.25s ease;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+.contact button[type="submit"]:hover,
+.contact button[type="submit"]:focus {
+  background: #94d2bd;
+  color: #003d3b;
+  transform: translateZ(12px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(148, 210, 189, 0.9);
+  outline: none;
+}
+
+/* Contact Info & Social Links */
+.contact-info {
+  margin-top: 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: #222;
+  user-select: none;
+}
+
+.social-media {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-media a {
+  color: #0a9396;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.15rem;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover,
+.social-media a:focus {
+  color: #005f73;
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 24px 12px;
+  background: #94d2bd;
+  color: #003d3b;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+  letter-spacing: 0.06em;
+}
+
+/* Animations */
+@keyframes fadeInMoveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+  }
+}
+
+@media (max-width: 650px){
   header {
-    position: sticky;
-    top: 0;
-    background-color: var(--bg-dark-2);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    user-select: none;
-  }
-  header h1 {
-    font-size: 1.6rem;
-    color: var(--clr-primary);
-    letter-spacing: 1.4px;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  nav a {
-    font-weight: 600;
-    transition: color var(--transition-duration);
-  }
-  nav a:hover, nav a:focus {
-    color: var(--clr-accent);
-  }
-  button#mode-toggle {
-    background: transparent;
-    border: none;
-    color: var(--clr-primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color var(--transition-duration);
-  }
-  button#mode-toggle:hover, button#mode-toggle:focus {
-    color: var(--clr-accent);
-  }
-
-  /* Hero Section */
-  #hero {
-    position: relative;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 90vh;
-    padding: 0 20px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    gap: 8px;
   }
-  #hero h1 {
-    font-size: 3rem;
-    line-height: 1.2;
-    max-width: 720px;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #58a6ff, #d2a8ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: hueShift 15s linear infinite;
-  }
-  @keyframes hueShift {
-    0% { filter: hue-rotate(0deg);}
-    100% { filter: hue-rotate(360deg);}
-  }
-  #hero p {
-    font-size: 1.25rem;
-    margin-bottom: 40px;
-    max-width: 560px;
-    color: #bfd8ffcc;
-  }
-  #hero button.primary-btn {
-    background: var(--clr-primary);
-    border: none;
-    padding: 18px 40px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    border-radius: 50px;
-    box-shadow: var(--shadow-glow);
-    cursor: pointer;
-    transition: background-color var(--transition-duration), transform 0.3s ease;
-    color: white;
-  }
-  #hero button.primary-btn:hover, #hero button.primary-btn:focus {
-    background: var(--clr-accent);
-    transform: scale(1.05);
-  }
-
-  /* Particle Canvas overlay on hero */
-  #particle-canvas {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    top: 0; left: 0;
-    pointer-events: none;
-  }
-
-  /* About Section */
-  #about {
-    background: var(--bg-dark-2);
-    border-radius: 12px;
-    box-shadow: var(--shadow-glow);
-  }
-  #about .content {
-    display: flex;
+  nav ul {
     flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
     justify-content: center;
+    gap: 16px;
   }
-  #about .media {
-    flex: 1 1 320px;
-    max-width: 450px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 30px #5829ff66;
+  .hero-content h2 {
+    font-size: 2rem;
   }
-  #about .media img, #about .media video {
-    width: 100%;
-    display: block;
-    border-radius: 12px;
+  .hero {
+    height: 320px;
   }
-  #about .text-block {
-    flex: 1 1 350px;
-    color: #bfd8ffcc;
+  .about-image {
+    max-width: 100%;
   }
-  #about h2 {
-    color: var(--clr-primary);
-    margin-bottom: 16px;
-  }
-  #about p {
-    font-size: 1.1rem;
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-
-  /* Timeline */
-  #timeline {
-    position: relative;
-    padding-left: 40px;
-    border-left: 4px solid var(--clr-accent);
-  }
-  .milestone {
-    margin-bottom: 32px;
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-  }
-  /* Add visible by default for troubleshooting */
-  .milestone.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .milestone h3 {
-    margin: 0 0 6px;
-    color: var(--clr-accent);
-  }
-  .milestone span {
-    font-size: 0.9rem;
-    color: #94a3b8;
-  }
-
-  /* Founders section */
-  #founders {
-    margin-top: 48px;
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .founder {
-    position: relative;
-    width: 140px;
-    border-radius: 120px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 0 20px #8250dfcc;
-    transition: box-shadow 0.3s ease;
-  }
-  .founder img {
-    width: 100%;
-    display: block;
-    border-radius: 120px;
-  }
-  .founder:hover, .founder:focus {
-    box-shadow: 0 0 30px var(--clr-primary);
-  }
-  .founder .linkedin-tooltip {
-    position: absolute;
-    bottom: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--clr-primary);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    white-space: nowrap;
-  }
-  .founder:hover .linkedin-tooltip,
-  .founder:focus .linkedin-tooltip {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Products Section */
-  #products {
-    background: var(--bg-dark-2);
-    border-radius: 12px;
-    box-shadow: var(--shadow-glow);
-  }
-  #products h2 {
-    color: var(--clr-primary);
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .tab {
-    padding: 12px 30px;
-    background: #202c44aa;
-    color: var(--clr-accent);
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 30px;
-    user-select: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .tab:hover, .tab:focus {
-    background: var(--clr-accent);
-    color: var(--bg-dark);
-  }
-  .tab.active {
-    background: var(--clr-primary);
-    color: white;
-  }
-
-  .product-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-  }
-  .card {
-    background: #121926;
-    flex: 1 1 280px;
-    max-width: 300px;
-    border-radius: 16px;
-    box-shadow: 0 0 25px #58a6ff55;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: default;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover, .card:focus-within {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 35px #58a6ffbb;
-  }
-  .card-icon {
-    font-size: 56px;
-    margin-bottom: 16px;
-    color: var(--clr-primary);
-  }
-  .card h3 {
-    margin-bottom: 10px;
-    color: var(--clr-accent);
-    text-align: center;
-  }
-  .card p {
-    color: #9bb4d0cc;
-    text-align: center;
-    flex-grow: 1;
-  }
-
-  /* AI Demo Section */
-  #ai-demo {
-    padding-bottom: 40px;
-  }
-  #ai-demo h2 {
-    color: var(--clr-primary);
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  #demo-chatbot {
-    max-width: 560px;
-    margin: 0 auto;
-    background: #121926;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 0 30px #8250dfaa;
-    display: flex;
-    flex-direction: column;
-    height: 420px;
-  }
-  #chat-output {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-right: 10px;
-    color: #bfd8ffcc;
-    font-size: 1rem;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    scrollbar-width: thin;
-  }
-  #chat-output::-webkit-scrollbar {
-    width: 6px;
-  }
-  #chat-output::-webkit-scrollbar-thumb {
-    background: #58a6ffbb;
-    border-radius: 3px;
-  }
-  #chat-input-container {
-    display: flex;
-    gap: 10px;
-  }
-  #chat-input {
-    flex-grow: 1;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border-radius: 50px;
-    border: 2px solid var(--clr-primary);
-    background: transparent;
-    color: var(--text-light);
-    transition: border-color 0.3s ease;
-  }
-  #chat-input::placeholder {
-    color: #94a3b8;
-  }
-  #chat-input:focus {
-    outline: none;
-    border-color: var(--clr-accent);
-  }
-  #chat-submit-btn {
-    background: var(--clr-primary);
-    border: none;
-    padding: 0 24px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  #chat-submit-btn:disabled {
-    background: #3c5a77;
-    cursor: not-allowed;
-  }
-  #chat-submit-btn:hover:not(:disabled),
-  #chat-submit-btn:focus:not(:disabled) {
-    background: var(--clr-accent);
-  }
-  #chat-loader {
-    display: none;
-    margin-left: 12px;
-    border: 4px solid #61dafb50;
-    border-top: 4px solid var(--clr-primary);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 1s linear infinite;
-    align-self: center;
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  #ai-demo-callout {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #94a3b8;
-    font-style: italic;
-  }
-
-  /* Case Studies / Testimonials Section */
-  #case-studies {
-    background: var(--bg-dark-2);
-    border-radius: 12px;
-    box-shadow: var(--shadow-glow);
-    padding-bottom: 48px;
-  }
-  #case-studies h2 {
-    color: var(--clr-primary);
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .testimonial-carousel {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .carousel-inner {
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 0 25px #58a6ff88;
-  }
-  .carousel-slide {
-    display: none;
-    padding: 40px;
-    background: #121926;
-    color: #bfd8ffcc;
-    text-align: center;
-    user-select: none;
-    min-height: 220px;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .carousel-slide.active {
-    display: flex;
-  }
-  .testimonial-quote {
-    font-style: italic;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.4;
-  }
-  .testimonial-client {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    justify-content: center;
-  }
-  .client-logo {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-  }
-  .client-name {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--clr-accent);
-  }
-  .carousel-controls {
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-  }
-  button.carousel-btn {
-    background: var(--clr-primary);
-    border: none;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  button.carousel-btn:hover, button.carousel-btn:focus {
-    background: var(--clr-accent);
-  }
-  .metrics {
-    margin-top: 30px;
-    text-align: center;
-    font-size: 1.25rem;
-    color: var(--clr-primary);
-    user-select: none;
-  }
-
-  /* Blog Section */
-  #blog {
-    padding-bottom: 60px;
-  }
-  #blog h2 {
-    color: var(--clr-primary);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .blog-filters {
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .filter-btn {
-    background: #202c44cc;
-    color: var(--clr-accent);
-    border-radius: 30px;
-    padding: 8px 22px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .filter-btn.active, .filter-btn:hover, .filter-btn:focus {
-    background: var(--clr-primary);
-    color: white;
-  }
-  .blog-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 25px;
-  }
-  .blog-card {
-    background: #121926;
-    border-radius: 16px;
-    box-shadow: 0 0 25px #8250dfaa;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.4s ease;
-  }
-  .blog-card:hover, .blog-card:focus-within {
-    box-shadow: 0 0 40px var(--clr-accent);
-  }
-  .blog-image {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-  .blog-content {
+  .service-item {
     padding: 18px 20px;
-    color: #bfd8ffcc;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
   }
-  .blog-title {
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--clr-primary);
+  .goals ul {
+    grid-template-columns: 1fr;
   }
-  .blog-excerpt {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    flex-grow: 1;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-  }
-  .blog-card:hover .blog-excerpt,
-  .blog-card:focus-within .blog-excerpt {
-    opacity: 1;
-    max-height: 200px;
-    margin-top: 8px;
-  }
-
-  /* Careers Section */
-  #careers {
-    background: var(--bg-dark-2);
-    border-radius: 12px;
-    box-shadow: var(--shadow-glow);
-  }
-  #careers h2 {
-    color: var(--clr-primary);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .culture-media {
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 0 25px #8250dfaa;
-  }
-  .culture-media video, .culture-media img {
-    width: 100%;
-    display: block;
-  }
-  .positions {
-    max-width: 800px;
-    margin: 0 auto 40px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .job {
-    background: #121926;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 0 20px #8250dfdd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .job-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .job-title {
-    color: var(--clr-accent);
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-  .job-location {
-    font-size: 0.85rem;
-    color: #94a3b8;
-  }
-  .apply-btn {
-    background: var(--clr-primary);
-    padding: 10px 28px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  .apply-btn:hover, .apply-btn:focus {
-    background: var(--clr-accent);
-  }
-
-  /* Contact Section */
-  #contact {
-    padding-bottom: 80px;
-  }
-  #contact h2 {
-    color: var(--clr-primary);
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .contact-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-  }
-  .contact-form {
-    flex: 1 1 320px;
-    background: var(--bg-dark-2);
-    padding: 28px 24px;
-    border-radius: 16px;
-    box-shadow: var(--shadow-glow);
-  }
-  .contact-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--clr-accent);
-  }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    border: none;
-    background: #0f172a;
-    color: #c0caf5;
-    font-size: 0.95rem;
-    resize: vertical;
-    transition: box-shadow 0.3s ease;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    box-shadow: 0 0 10px var(--clr-primary);
-  }
-  .contact-form button {
-    background: var(--clr-primary);
-    color: white;
-    border: none;
-    padding: 14px 0;
-    font-weight: 700;
-    border-radius: 50px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .contact-form button:hover, .contact-form button:focus {
-    background: var(--clr-accent);
-  }
-  .map {
-    flex: 1 1 320px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-glow);
-  }
-  .map iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    min-height: 360px;
-  }
-  .social-icons {
-    max-width: 900px;
-    margin: 36px auto 0;
-    text-align: center;
-  }
-  .social-icons a {
-    margin: 0 14px;
-    font-size: 1.8rem;
-    color: var(--clr-primary);
-    transition: color 0.3s ease;
-  }
-  .social-icons a:hover, .social-icons a:focus {
-    color: var(--clr-accent);
-  }
-
-  /* Footer */
-  footer {
-    padding: 24px 20px;
-    text-align: center;
-    background: var(--bg-dark-2);
-    color: #57606a;
-    font-size: 0.85rem;
-    user-select: none;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    #about .content {
-      flex-direction: column;
-      padding: 0 10px;
-    }
-    .founder {
-      width: 110px;
-    }
-    .product-cards {
-      justify-content: center;
-    }
-    .career .positions {
-      padding: 0 10px;
-    }
-    .contact-container {
-      flex-direction: column;
-      padding: 0 10px;
-    }
-    #hero h1 {
-      font-size: 2.2rem;
-    }
-  }
+}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 <header>
-  <h1>ACCETION</h1>
-  <nav role="navigation" aria-label="Primary Navigation">
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#ai-demo">AI Demo</a>
-    <a href="#case-studies">Case Studies</a>
-    <a href="#blog">Blog</a>
-    <a href="#careers">Careers</a>
-    <a href="#contact">Contact</a>
+  <div class="logo" aria-label="Company logo">
+    <h1 tabindex="0">Accetion.</h1>
+  </div>
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="#home" tabindex="0">Home</a></li>
+      <li><a href="#about" tabindex="0">About Us</a></li>
+      <li><a href="#services" tabindex="0">Services</a></li>
+      <li><a href="#blog" tabindex="0">Blog</a></li>
+      <li><a href="#contact" tabindex="0">Contact Us</a></li>
+    </ul>
   </nav>
-  <button id="mode-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode" aria-pressed="false">☀</button>
 </header>
 
-<main>
-  <!-- Hero Section -->
-  <section id="hero" aria-label="Hero Section">
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
-    <h1>Revolutionizing Invoicing with AI</h1>
-    <p>Unlock smarter invoice automation, fraud detection, and AI-powered insights.</p>
-    <button class="primary-btn" role="button" tabindex="0">Get Started</button>
-  </section>
+<section id="home" class="hero" role="region" aria-label="Hero section">
+  <div class="hero-content">
+    <h2 tabindex="0">Innovating for a Better Tomorrow</h2>
+    <p tabindex="0">Empowering businesses through AI-driven automation and digital transformation.</p>
+    <a href="#services" class="cta-button" tabindex="0">Get Started</a>
+  </div>
+</section>
 
-  <!-- About Section -->
-  <section id="about" aria-labelledby="about-title">
-    <h2 id="about-title">About Us</h2>
-    <div class="content">
-      <div class="media" aria-label="Team photo">
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Team working together in office" loading="lazy"/>
-      </div>
-      <div class="text-block">
-        <p>Accetion is a cutting-edge AI company focused on transforming how businesses handle invoicing. Our mission is to save time, detect fraud, and provide actionable insights that drive profitability.</p>
-        <div id="timeline" aria-label="Company Milestones">
-          <div class="milestone visible" tabindex="0">
-            <h3>2018</h3>
-            <span>Company founded</span>
-          </div>
-          <div class="milestone visible" tabindex="0">
-            <h3>2019</h3>
-            <span>Launched first AI-powered invoicing solution</span>
-          </div>
-          <div class="milestone visible" tabindex="0">
-            <h3>2021</h3>
-            <span>Reached 100+ enterprise clients</span>
-          </div>
-          <div class="milestone visible" tabindex="0">
-            <h3>2023</h3>
-            <span>Expanded to fraud detection and real-time insights</span>
-          </div>
-        </div>
-        <div id="founders" aria-label="Founders">
-          <div class="founder" tabindex="0" role="link" aria-label="LinkedIn profile
+<section id="about" class="about" role="region" aria-label="About us section">
+  <h2 tabindex="0">About Us</h2>
+  <img 
+    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+    alt="Team collaborating in a modern office space" 
+    class="about-image" 
+    tabindex="0"
+    />
+  <p tabindex="0">Our mission is to lead in sustainable and responsible AI technology, guided by our core values of integrity, innovation, and community impact.</p>
+</section>
+
+<section id="goals" class="goals" role="region" aria-label="Goals section">
+  <h2 tabindex="0">Our Goals</h2>
+  <ul>
+    <li tabindex="0">Launch and scale our AI-powered invoice automation platform by Q2 2024.</li>
+    <li tabindex="0">Achieve over 95% customer satisfaction by 2025 through continuous innovation and exceptional support.</li>
+    <li tabindex="0">Expand our digital solutions and positive impact to international markets by 2026.</li>
+  </ul>
+</section>
+
+<section id="services" class="services" role="region" aria-label="Services section">
+  <h2 tabindex="0">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-item" tabindex="0" aria-label="Consulting service">
+      <img src="https://cdn-icons-png.flaticon.com/512/3208/3208212.png" alt="Consulting icon" />
+      <h3>Consulting</h3>
+      <p>Expert AI and automation advisory to help streamline your business operations and drive digital transformation.</p>
+    </div>
+    <div class="service-item" tabindex="0" aria-label="Product development service">
+      <img src="https://cdn-icons-png.flaticon.com/512/3580/3580231.png" alt="Product development icon" />
+      <h3>Product Development</h3>
+      <p>Cutting-edge AI-powered solutions designed to automate invoicing, reduce manual effort, and enhance business efficiency.</p>
+    </div>
+    <div class="service-item" tabindex="0" aria-label="Support service">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Support services icon" />
+      <h3>Support Services</h3>
+      <p>Dedicated customer support to ensure seamless integration, ongoing success, and continuous improvement of your digital solutions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials" role="region" aria-label="Testimonials section">
+  <h2 tabindex="0">What Our Clients Say</h2>
+  <blockquote tabindex="0">
+    <p>"Their innovative approach to automation helped us reduce errors and boost productivity like never before.""</p>
+    <cite>- Rajesh Kumar, Founder of LogiTech Pvt Ltd</cite>
+  </blockquote>
+  <blockquote tabindex="0">
+    <p>"Accetion’s AI solutions drastically improved our invoicing process and saved us countless hours.""</p>
+    <cite>- Jane Patel, CFO of Ecom Solutions</cite>
+  </blockquote>
+</section>
+
+<section id="blog" class="blog" role="region" aria-label="Blog preview section">
+  <h2 tabindex="0">Latest Blog Posts</h2>
+  <article tabindex="0">
+    <h3>Post Title 1</h3>
+    <p>Short description of the blog post. <a href="#" tabindex="0">Read More</a></p>
+  </article>
+  <article tabindex="0">
+    <h3>Post Title 2</h3>
+    <p>Short description of the blog post. <a href="#" tabindex="0">Read More</a></p>
+  </article>
+</section>
+
+<section id="contact" class="contact" role="region" aria-label="Contact us section">
+  <h2 tabindex="0">Contact Us</h2>
+  <form action="submit_form.php" method="post" aria-label="Contact form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required aria-required="true" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required aria-required="true" />
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required aria-required="true"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="contact-info" aria-label="Company contact information">
+    <p>Email: info@accetion.com</p>
+    <p>Phone: (123) 456-7890</p>
+    <div class="social-media" aria-label="Social media links">
+      <a href="#" tabindex="0">Facebook</a>
+      <a href="#" tabindex="0">Twitter</a>
+      <a href="#" tabindex="0">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <p>&copy; 2023 Startup Company. All rights reserved.</p>
+</footer>
+
+<script>
+  // Basic script to add subtle 3D tilt effect to hero text based on mouse movement
+  const heroContent = document.querySelector('.hero-content');
+  const hero = document.querySelector('.hero');
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within hero
+    const y = e.clientY - rect.top; // y position within hero
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * 8; // tilt degree max 8
+    const rotateY = ((x - centerX) / centerX) * 8;
+
+    heroContent.style.transform = \perspective(600px) rotateX(\${-rotateX}deg) rotateY(\${rotateY}deg) translateZ(40px)\;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    heroContent.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(40px)';
+  });
+</script>
+</body>
+</html>
